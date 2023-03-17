@@ -35,10 +35,4 @@ module.exports = {
             template: "./src/index.html"
         })
     ],
-
-    productionSourceMap: true, // NOTE: this is default
-    
-    configureWebpack: {
-        devtool: 'source-map',
-    }
 }
