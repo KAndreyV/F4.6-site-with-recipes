@@ -1,9 +1,13 @@
 import React from "react";
-import "../styles/App.css";
-import Header from "./Header";
-import Main from "./Main"
+import { Routes, Route } from 'react-router-dom'; 
 import axios from 'axios';
+
+import Header from "./Header";
+import Dishes from "./Dishes"
 import Categories from "./Categories";
+import Category from "./Category";
+import ErrorPage from "./Error-page";
+import Recipe from "./Recipe";
 
 
 function App () {
@@ -26,17 +30,29 @@ function App () {
     for(let i = 0; i < response.length; i+=1) {
         dishes.push(response[i]);
     };
-    console.log(dishes);
+    
 
     if(requested === false){
         ReqDishes();
         dishReq(true);
     };
 
+
+    if(requested === true){
+        console.log(dishes);
+    };
+
     return (
         <>
-            <Header />
-            <Main dishes={dishes}/>
+            <Routes>
+                <Route path="/" element={<Header />}>
+                    <Route index path="/" element={<Dishes dishes={dishes}/>}/>
+                    <Route path="categories" element={<Categories />}/>
+                    <Route path="categories/:category" element={<Category dishes={dishes}/>}/>
+                    <Route path="recipe/:id" element={<Recipe dishes={dishes}/>}/>
+                    <Route path="*" element={<ErrorPage />}/>
+                </Route>
+            </Routes>
         </>
     );
 }

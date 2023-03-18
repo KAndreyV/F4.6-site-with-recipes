@@ -1,9 +1,11 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
-import Recipes from './Recipes';
 import "../styles/Dish.css"
+import { Link } from "react-router-dom";
+
 
 function Dish(props) {
+    const LINK1 = `http://localhost:8080/recipe/${props.dish.id}`;
+
     return(
         <>
             <tr key={props.dish.id}>
@@ -12,7 +14,7 @@ function Dish(props) {
                     <img src={props.dish.photo} className="photo_of_dish"/>    
                 </td>
                 <td>{props.dish.category}</td>
-                <td> <Recipes dish={props.dish}/> </td>
+                <td><Link to={LINK1}>Рецепт {props.dish.id}</Link></td>
             </tr>
         </>
     );

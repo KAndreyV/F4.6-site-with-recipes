@@ -1,15 +1,16 @@
 import React from "react";
 import '../styles/Header.css'
-import Button from 'react-bootstrap/Button';
+import { Link, Outlet } from "react-router-dom";
 
 
 function Header() {
     return (
         <>
-            <div className="head"> 
-                <Button className="btn-primary" >Главная</Button>
-                <Button className="btn-primary" href="http://localhost:8080/categories/">Категории</Button>
-            </div>
+            <header className="head"> 
+                <Link className="btn-primary" to="http://localhost:8080/">Главная</Link>
+                <Link className="btn-primary" to="http://localhost:8080/categories">Категории</Link>
+            </header>
+            <Outlet />
         </>
     );
 }

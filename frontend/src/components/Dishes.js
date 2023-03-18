@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import Dish from './Dish';
 import 'bootstrap/dist/css/bootstrap.min.css';
